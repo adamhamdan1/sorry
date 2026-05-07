@@ -281,10 +281,30 @@ h2 {
   transform: translateY(0);
 }
 
-.apology-message p:not(.tiny-line) {
-  color: #5e5049;
+#typedApology {
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--crimson-dark);
+  background: rgba(255, 248, 236, 0.18);
   font-size: 1.12rem;
+  font-weight: 700;
   line-height: 2;
+  text-shadow: 0 1px 0 rgba(255, 248, 236, 0.68);
+}
+
+.love-note {
+  min-height: 28px;
+  margin-bottom: 8px;
+  color: var(--crimson-dark) !important;
+  font-weight: 800;
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.love-note.show {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .final-line {
@@ -431,7 +451,7 @@ h2 {
     max-height: 360px;
   }
 
-  .apology-message p:not(.tiny-line) {
+  #typedApology {
     font-size: 0.98rem;
     line-height: 1.85;
   }

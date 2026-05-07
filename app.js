@@ -11,13 +11,14 @@ const song = document.querySelector("#song");
 const sparkleLayer = document.querySelector("#sparkleLayer");
 const typedApology = document.querySelector("#typedApology");
 const finalLine = document.querySelector("#finalLine");
+const loveNote = document.querySelector("#loveNote");
 
 let noClicks = 0;
 let phase = "initial";
 let typingStarted = false;
 
 const apologyText =
-  "بعرف إني زعلتك، وبعرف إن المزح ما بيمسح الغلط. حقك علي، ومش جاي أبرر. جاي أقول إني مهتم فيك، بزعلِك، وبكل كلمة بيننا. هون ليش تنامي زعلانة، حتى لو شو ما صار بيننا قبل، بس بتضلي قطعة مني. بحبك. أوعدك أسمعك أهدأ، وأنتبه أكتر، وما أخلي كبريائي يغلب محبتي إلك.";
+  "بعرف إني زعلتك، وبعرف إن المزح ما بيمسح الغلط. حقك علي، ومش جاي أبرر. جاي أقول إني مهتم فيك، بزعلِك، وبكل كلمة بيننا. هون ليش تنامي زعلانة، حتى لو شو ما صار بيننا قبل، بس بتضلي قطعة مني. بحبك.";
 
 const releaseHearts = () => {
   const pieces = ["♥", "♡", "✦", "♥", "♡", "✧"];
@@ -42,6 +43,7 @@ const typeApology = () => {
 
   typingStarted = true;
   typedApology.textContent = "";
+  loveNote.classList.remove("show");
   finalLine.classList.remove("show");
 
   let index = 0;
@@ -54,7 +56,8 @@ const typeApology = () => {
       return;
     }
 
-    finalLine.classList.add("show");
+    loveNote.classList.add("show");
+    window.setTimeout(() => finalLine.classList.add("show"), 350);
     releaseHearts();
   };
 
@@ -80,6 +83,7 @@ const showApology = () => {
   noButton.classList.add("hidden");
   yesButton.classList.add("big-yes");
   yesButton.textContent = "سامحيني";
+  musicStatus.textContent = "هاي اللحظة إلها أغنيتها.";
   apologyMessage.classList.add("show");
   typeApology();
   phase = "apology";
