@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>بصير نحكي؟</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,6 +15,7 @@
   <body>
     <main class="apology-shell">
       <section class="talk-card" aria-live="polite">
+        <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
         <p class="tiny-line" id="tinyLine">طلب صغير قبل ما تزعلي زيادة</p>
         <h1 id="questionTitle">بصير نحكي؟</h1>
         <p class="subtitle" id="subtitle">
@@ -38,14 +39,8 @@
         <div class="apology-message" id="apologyMessage">
           <p class="tiny-line">طيب، خليني أقولها صح</p>
           <h2>أنا آسف من قلبي</h2>
-          <p>
-            بعرف إني زعلتك، وبعرف إن المزح ما بيمسح الغلط. حقك علي، ومش جاي
-            أبرر. جاي أقول إني مهتم فيك، بزعلِك، وبكل كلمة بيننا.
-          </p>
-          <p>
-            أوعدك أسمعك أهدأ، وأنتبه أكتر، وما أخلي كبريائي يغلب محبتي إلك.
-            سامحيني؟
-          </p>
+          <p id="typedApology"></p>
+          <p class="final-line" id="finalLine">سامحيني؟</p>
         </div>
       </section>
     </main>

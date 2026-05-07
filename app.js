@@ -8,11 +8,61 @@ const apologyMessage = document.querySelector("#apologyMessage");
 const musicButton = document.querySelector("#musicButton");
 const musicStatus = document.querySelector("#musicStatus");
 const song = document.querySelector("#song");
+const sparkleLayer = document.querySelector("#sparkleLayer");
+const typedApology = document.querySelector("#typedApology");
+const finalLine = document.querySelector("#finalLine");
 
 let noClicks = 0;
 let phase = "initial";
+let typingStarted = false;
+
+const apologyText =
+  "بعرف إني زعلتك، وبعرف إن المزح ما بيمسح الغلط. حقك علي، ومش جاي أبرر. جاي أقول إني مهتم فيك، بزعلِك، وبكل كلمة بيننا. أوعدك أسمعك أهدأ، وأنتبه أكتر، وما أخلي كبريائي يغلب محبتي إلك.";
+
+const releaseHearts = () => {
+  const pieces = ["♥", "♡", "✦", "♥", "♡", "✧"];
+
+  pieces.forEach((piece, index) => {
+    const sparkle = document.createElement("span");
+    sparkle.className = "sparkle";
+    sparkle.textContent = piece;
+    sparkle.style.setProperty("--x", `${18 + Math.random() * 64}%`);
+    sparkle.style.setProperty("--size", `${18 + Math.random() * 16}px`);
+    sparkle.style.setProperty("--rotate", `${Math.random() > 0.5 ? "" : "-"}${18 + Math.random() * 26}deg`);
+    sparkle.style.animationDelay = `${index * 90}ms`;
+    sparkleLayer.append(sparkle);
+    sparkle.addEventListener("animationend", () => sparkle.remove());
+  });
+};
+
+const typeApology = () => {
+  if (typingStarted) {
+    return;
+  }
+
+  typingStarted = true;
+  typedApology.textContent = "";
+  finalLine.classList.remove("show");
+
+  let index = 0;
+  const typeNext = () => {
+    typedApology.textContent = apologyText.slice(0, index);
+    index += 1;
+
+    if (index <= apologyText.length) {
+      window.setTimeout(typeNext, 22);
+      return;
+    }
+
+    finalLine.classList.add("show");
+    releaseHearts();
+  };
+
+  typeNext();
+};
 
 const showFinalNudge = () => {
+  releaseHearts();
   tinyLine.textContent = "أنا بعرفك";
   questionTitle.textContent = "ما أتوقع، انتي حنونة";
   subtitle.textContent = "زر لا أخذ فرصته كاملة.";
@@ -23,6 +73,7 @@ const showFinalNudge = () => {
 };
 
 const showApology = () => {
+  releaseHearts();
   tinyLine.textContent = "شكرا لأنك وافقتي";
   questionTitle.textContent = "بعرف إني غلطت";
   subtitle.textContent = "هاي الرسالة اللي كنت بدي أوصلها.";
@@ -30,6 +81,7 @@ const showApology = () => {
   yesButton.classList.add("big-yes");
   yesButton.textContent = "سامحيني";
   apologyMessage.classList.add("show");
+  typeApology();
   phase = "apology";
 };
 
@@ -43,6 +95,7 @@ noButton.addEventListener("click", () => {
   talkCard.classList.remove("teasing");
   void talkCard.offsetWidth;
   talkCard.classList.add("teasing");
+  releaseHearts();
   phase = "confirm";
   noClicks += 1;
 
