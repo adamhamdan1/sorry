@@ -30,6 +30,15 @@
           <button class="no-button" type="button" id="noButton">لا</button>
         </div>
 
+        <div class="music-row">
+          <button class="music-button" type="button" id="musicButton">شغلي الأغنية</button>
+          <span class="music-status" id="musicStatus">الأغنية بتشتغل بعد ضغطة منك.</span>
+        </div>
+
+        <audio id="song" preload="auto" loop>
+          <source src="assets/song.mp3" type="audio/mpeg" />
+        </audio>
+
         <div class="apology-message" id="apologyMessage">
           <p class="tiny-line">طيب، خليني أقولها صح</p>
           <h2>أنا آسف من قلبي</h2>

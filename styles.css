@@ -147,7 +147,8 @@ h2 {
 }
 
 .yes-button:hover,
-.no-button:hover {
+.no-button:hover,
+.music-button:hover {
   transform: translateY(-2px);
 }
 
@@ -167,6 +168,40 @@ h2 {
 
 .talk-card.teasing {
   animation: wiggle 360ms ease;
+}
+
+.music-row {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.music-button {
+  min-height: 42px;
+  border: 1px solid rgba(157, 46, 69, 0.2);
+  border-radius: 8px;
+  padding: 8px 18px;
+  color: var(--rose-dark);
+  background: rgba(255, 255, 255, 0.68);
+  cursor: pointer;
+  font-weight: 800;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.music-button.playing {
+  color: #fff;
+  background: var(--rose-dark);
+  box-shadow: 0 12px 28px rgba(157, 46, 69, 0.2);
+}
+
+.music-status {
+  min-height: 24px;
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
 .apology-message {
@@ -231,7 +266,9 @@ h2 {
 
   .choice-row,
   .yes-button,
-  .no-button {
+  .no-button,
+  .music-row,
+  .music-button {
     width: 100%;
   }
 

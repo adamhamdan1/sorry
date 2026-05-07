@@ -2,3 +2,4 @@ desktop-preview.png
 mobile-preview.png
 *.ps1
 *.cmd
+!assets/song.mp3

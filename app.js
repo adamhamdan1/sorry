@@ -5,6 +5,9 @@ const yesButton = document.querySelector("#yesButton");
 const noButton = document.querySelector("#noButton");
 const talkCard = document.querySelector(".talk-card");
 const apologyMessage = document.querySelector("#apologyMessage");
+const musicButton = document.querySelector("#musicButton");
+const musicStatus = document.querySelector("#musicStatus");
+const song = document.querySelector("#song");
 
 let noClicks = 0;
 let phase = "initial";
@@ -55,4 +58,28 @@ yesButton.addEventListener("click", () => {
   }
 
   showApology();
+});
+
+musicButton.addEventListener("click", async () => {
+  if (!song.currentSrc) {
+    musicStatus.textContent = "حط ملف الأغنية باسم assets/song.mp3.";
+    return;
+  }
+
+  if (song.paused) {
+    try {
+      await song.play();
+      musicButton.textContent = "وقفي الأغنية";
+      musicButton.classList.add("playing");
+      musicStatus.textContent = "اشتغلت. هيك الاعتذار صار له موسيقى.";
+    } catch {
+      musicStatus.textContent = "المتصفح رفض التشغيل. جربي ضغطة ثانية.";
+    }
+    return;
+  }
+
+  song.pause();
+  musicButton.textContent = "شغلي الأغنية";
+  musicButton.classList.remove("playing");
+  musicStatus.textContent = "توقفت الأغنية.";
 });
