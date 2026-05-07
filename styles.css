@@ -1,0 +1,391 @@
+:root {
+  --ink: #26222c;
+  --muted: #6f6675;
+  --paper: #fffaf3;
+  --rose: #c9485f;
+  --rose-dark: #9d2e45;
+  --gold: #d49a36;
+  --mint: #7ab6a4;
+  --sky: #8cb9d8;
+  --bg: #f7eee7;
+  --shadow: 0 24px 80px rgba(86, 54, 55, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: "Cairo", system-ui, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(122, 182, 164, 0.22), transparent 26rem),
+    radial-gradient(circle at 80% 5%, rgba(212, 154, 54, 0.2), transparent 22rem),
+    linear-gradient(135deg, #fff8ef 0%, var(--bg) 52%, #edf5f1 100%);
+}
+
+button,
+a {
+  font: inherit;
+}
+
+.apology-shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 40px;
+}
+
+.hero {
+  min-height: calc(100vh - 56px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+  gap: 42px;
+  align-items: center;
+}
+
+.hero-copy {
+  max-width: 620px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--rose-dark);
+  font-weight: 800;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: clamp(4rem, 12vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 16px;
+  font-size: 2rem;
+  line-height: 1.25;
+}
+
+.intro {
+  max-width: 590px;
+  color: var(--muted);
+  font-size: 1.2rem;
+  line-height: 2;
+}
+
+.hero-actions,
+.response-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.primary-action,
+.ghost-action,
+.read-more,
+.response-buttons button {
+  min-height: 48px;
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 22px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.primary-action,
+.read-more {
+  color: #fff;
+  background: var(--rose);
+  box-shadow: 0 12px 28px rgba(201, 72, 95, 0.26);
+  font-weight: 800;
+}
+
+.ghost-action,
+.response-buttons button {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(38, 34, 44, 0.12);
+  font-weight: 700;
+}
+
+.primary-action:hover,
+.ghost-action:hover,
+.read-more:hover,
+.response-buttons button:hover {
+  transform: translateY(-2px);
+}
+
+.visual-wrap {
+  position: relative;
+  min-height: 560px;
+  display: grid;
+  place-items: center;
+}
+
+.letter-art {
+  width: min(100%, 520px);
+  filter: drop-shadow(0 30px 42px rgba(98, 55, 64, 0.2));
+  animation: breathe 4.5s ease-in-out infinite;
+}
+
+.floating-note {
+  position: absolute;
+  border-radius: 999px;
+  padding: 9px 15px;
+  color: #fff;
+  font-weight: 800;
+  box-shadow: var(--shadow);
+}
+
+.note-one {
+  top: 16%;
+  right: 4%;
+  background: var(--rose);
+}
+
+.note-two {
+  bottom: 22%;
+  left: 0;
+  background: var(--mint);
+}
+
+.note-three {
+  top: 30%;
+  left: 12%;
+  background: var(--gold);
+}
+
+.message-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+  gap: 22px;
+  align-items: stretch;
+  padding: 24px 0;
+}
+
+.letter-card,
+.promise-panel,
+.response-zone {
+  border: 1px solid rgba(38, 34, 44, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 250, 243, 0.88);
+  box-shadow: var(--shadow);
+}
+
+.letter-card {
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.letter-topline,
+.response-zone {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.letter-topline {
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.date-pill {
+  border-radius: 999px;
+  padding: 5px 13px;
+  color: #fff;
+  background: var(--sky);
+}
+
+.letter-card p,
+.promise-panel p,
+.response-output {
+  color: var(--muted);
+  font-size: 1.06rem;
+  line-height: 2;
+}
+
+.hidden-line {
+  max-height: 0;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 260ms ease, opacity 260ms ease, margin 260ms ease;
+}
+
+.hidden-line.show {
+  max-height: 140px;
+  margin-top: 18px;
+  opacity: 1;
+}
+
+.promise-panel {
+  padding: 28px;
+}
+
+.promise-list {
+  display: grid;
+  gap: 14px;
+}
+
+.promise-list article {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 16px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.promise-list span {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--rose-dark);
+  font-weight: 800;
+}
+
+.promise-list p {
+  margin: 0;
+}
+
+.response-zone {
+  margin-top: 22px;
+  padding: 24px;
+}
+
+.response-buttons button {
+  min-width: 132px;
+}
+
+.response-buttons button.active {
+  color: #fff;
+  background: var(--rose-dark);
+  border-color: transparent;
+  box-shadow: 0 10px 22px rgba(157, 46, 69, 0.2);
+}
+
+.response-output {
+  min-width: 220px;
+  margin: 0;
+  text-align: left;
+  color: var(--rose-dark);
+  font-weight: 800;
+}
+
+body.soft-mode {
+  --rose: #b94b77;
+  --rose-dark: #823b60;
+  --bg: #f3edf4;
+}
+
+body.soft-mode .letter-art {
+  transform: rotate(-1deg) scale(1.02);
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@media (max-width: 820px) {
+  .hero,
+  .message-band,
+  .response-zone {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 54px 0 16px;
+  }
+
+  .hero-copy {
+    text-align: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .visual-wrap {
+    min-height: 380px;
+    order: -1;
+    overflow: hidden;
+  }
+
+  .letter-art {
+    width: min(92%, 420px);
+  }
+
+  .note-one {
+    right: 22%;
+  }
+
+  .response-zone,
+  .letter-topline {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .response-output {
+    text-align: right;
+  }
+}
+
+@media (max-width: 520px) {
+  .apology-shell {
+    width: min(100% - 20px, 1120px);
+    padding-top: 10px;
+  }
+
+  h1 {
+    font-size: 3.9rem;
+  }
+
+  h2 {
+    font-size: 1.55rem;
+  }
+
+  .intro,
+  .letter-card p,
+  .promise-panel p,
+  .response-output {
+    font-size: 1rem;
+  }
+
+  .primary-action,
+  .ghost-action,
+  .read-more,
+  .response-buttons button {
+    width: 100%;
+  }
+
+  .floating-note {
+    font-size: 0.9rem;
+  }
+}
