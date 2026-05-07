@@ -12,6 +12,7 @@ const sparkleLayer = document.querySelector("#sparkleLayer");
 const typedApology = document.querySelector("#typedApology");
 const finalLine = document.querySelector("#finalLine");
 const loveNote = document.querySelector("#loveNote");
+const blockNote = document.querySelector("#blockNote");
 
 let noClicks = 0;
 let phase = "initial";
@@ -45,6 +46,7 @@ const typeApology = () => {
   typedApology.textContent = "";
   loveNote.classList.remove("show");
   finalLine.classList.remove("show");
+  blockNote.classList.remove("show");
 
   let index = 0;
   const typeNext = () => {
@@ -77,6 +79,7 @@ const showFinalNudge = () => {
 
 const showApology = () => {
   releaseHearts();
+  talkCard.classList.add("apology-mode");
   tinyLine.textContent = "شكرا لأنك وافقتي";
   questionTitle.textContent = "بعرف إني غلطت";
   subtitle.textContent = "هاي الرسالة اللي كنت بدي أوصلها.";
@@ -87,6 +90,14 @@ const showApology = () => {
   apologyMessage.classList.add("show");
   typeApology();
   phase = "apology";
+};
+
+const showBlockNote = () => {
+  releaseHearts();
+  blockNote.classList.add("show");
+  yesButton.textContent = "خلص وعد";
+  musicStatus.textContent = "المصالحة الرسمية بانتظار فك البلوك.";
+  phase = "done";
 };
 
 noButton.addEventListener("click", () => {
@@ -111,6 +122,16 @@ noButton.addEventListener("click", () => {
 yesButton.addEventListener("click", () => {
   if (phase === "confirm") {
     showFinalNudge();
+    return;
+  }
+
+  if (phase === "apology") {
+    showBlockNote();
+    return;
+  }
+
+  if (phase === "done") {
+    releaseHearts();
     return;
   }
 

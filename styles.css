@@ -228,6 +228,10 @@ h2 {
   animation: wiggle 360ms ease;
 }
 
+.talk-card.apology-mode {
+  gap: 10px;
+}
+
 .music-row {
   display: grid;
   justify-items: center;
@@ -322,6 +326,24 @@ h2 {
   transform: translateY(0);
 }
 
+.block-note {
+  min-height: 34px;
+  margin: 0;
+  color: var(--cream) !important;
+  border-radius: 8px;
+  padding: 7px 12px;
+  background: linear-gradient(135deg, var(--crimson), var(--crimson-dark));
+  font-weight: 800;
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transition: opacity 260ms ease, transform 260ms ease;
+}
+
+.block-note.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 @keyframes cardRise {
   from {
     transform: translateY(18px) scale(0.985);
@@ -412,6 +434,34 @@ h2 {
     background: rgba(248, 238, 222, 0.28);
   }
 
+  .talk-card.apology-mode {
+    align-content: center;
+    gap: 7px;
+  }
+
+  .talk-card.apology-mode .subtitle,
+  .talk-card.apology-mode .music-row {
+    display: none;
+  }
+
+  .talk-card.apology-mode h1 {
+    margin-bottom: 2px;
+    font-size: 1.55rem;
+  }
+
+  .talk-card.apology-mode h2 {
+    margin-bottom: 6px;
+    font-size: 1.45rem;
+  }
+
+  .talk-card.apology-mode .choice-row {
+    min-height: 48px;
+  }
+
+  .talk-card.apology-mode .yes-button {
+    min-height: 46px;
+  }
+
   .talk-card::after {
     inset: 10px;
   }
@@ -448,12 +498,15 @@ h2 {
   }
 
   .apology-message.show {
-    max-height: 360px;
+    max-height: 390px;
   }
 
   #typedApology {
-    font-size: 0.98rem;
-    line-height: 1.85;
+    max-height: 190px;
+    overflow-y: auto;
+    padding: 8px 10px;
+    font-size: 0.92rem;
+    line-height: 1.68;
   }
 
   .no-button.hidden {
