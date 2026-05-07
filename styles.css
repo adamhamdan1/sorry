@@ -396,13 +396,10 @@ h2 {
     inset: 10px;
   }
 
-  .talk-card > *:not(.sparkle-layer) {
-    transform: translateX(-42px);
-  }
-
   .choice-row,
   .music-row {
     width: min(100%, 260px);
+    margin-inline: auto;
   }
 
   .yes-button,
@@ -414,6 +411,7 @@ h2 {
   h1 {
     margin-bottom: 10px;
     width: min(100%, 260px);
+    margin-inline: auto;
     font-size: 1.9rem;
     overflow-wrap: anywhere;
   }
