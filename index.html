@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>رسالة اعتذار</title>
+    <title>بصير نحكي؟</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,79 +14,34 @@
   </head>
   <body>
     <main class="apology-shell">
-      <section class="hero" aria-labelledby="page-title">
-        <div class="hero-copy">
-          <p class="eyebrow">من قلبي، بدون تبرير</p>
-          <h1 id="page-title">أنا آسف</h1>
-          <p class="intro">
-            أعرف أن كلمة آسف وحدها لا تصلح كل شيء، لكنها البداية التي أقدر أقولها بصدق:
-            زعلك يهمني، ووجودك عندي أغلى من أي كبرياء.
-          </p>
-          <div class="hero-actions">
-            <a class="primary-action" href="#letter">افتحي الرسالة</a>
-            <button class="ghost-action" type="button" id="softenButton">لمسة حنية</button>
-          </div>
+      <section class="talk-card" aria-live="polite">
+        <div class="letter-scene" aria-hidden="true">
+          <img src="assets/apology-letter.svg" alt="" />
         </div>
 
-        <div class="visual-wrap" aria-hidden="true">
-          <img src="assets/apology-letter.svg" alt="" class="letter-art" />
-          <span class="floating-note note-one">سامحيني</span>
-          <span class="floating-note note-two">أسمعك</span>
-          <span class="floating-note note-three">أتعلم</span>
-        </div>
-      </section>
+        <p class="tiny-line" id="tinyLine">طلب صغير قبل ما تزعلي زيادة</p>
+        <h1 id="questionTitle">بصير نحكي؟</h1>
+        <p class="subtitle" id="subtitle">
+          عندي اعتذار جاهز.
+        </p>
 
-      <section class="message-band" id="letter">
-        <div class="letter-card">
-          <div class="letter-topline">
-            <span>رسالة صادقة</span>
-            <span class="date-pill">اليوم</span>
-          </div>
-          <h2>ما بدي أهرب من غلطتي</h2>
+        <div class="choice-row" id="choiceRow">
+          <button class="yes-button" type="button" id="yesButton">آه</button>
+          <button class="no-button" type="button" id="noButton">لا</button>
+        </div>
+
+        <div class="apology-message" id="apologyMessage">
+          <p class="tiny-line">طيب، خليني أقولها صح</p>
+          <h2>أنا آسف من قلبي</h2>
           <p>
-            يمكن جرحتك بكلمة، بتصرف، أو بصمت ما كان بمكانه. ومهما كان السبب، حقك علي.
-            أنا ما جاي أدافع عن نفسي، جاي أعترف إن شعورك كان لازم يكون أولوية عندي.
+            بعرف إني زعلتك، وبعرف إن المزح ما بيمسح الغلط. حقك علي، ومش جاي
+            أبرر. جاي أقول إني مهتم فيك، بزعلِك، وبكل كلمة بيننا.
           </p>
           <p>
-            إذا كنت خليتك تحسي إنك لحالك، أو إن كلامك مش مسموع، فأنا آسف من كل قلبي.
-            أنا محتاج أصلح طريقتي، مش بس أقول كلام حلو للحظة.
-          </p>
-          <button class="read-more" type="button" id="revealButton">كملي قراءة</button>
-          <p class="hidden-line" id="hiddenLine">
-            أوعدك أسمع قبل ما أرد، أهدأ قبل ما أزعل، وأختارك حتى في الأيام الصعبة.
+            أوعدك أسمعك أهدأ، وأنتبه أكتر، وما أخلي كبريائي يغلب محبتي إلك.
+            سامحيني؟
           </p>
         </div>
-
-        <aside class="promise-panel" aria-label="وعود">
-          <h2>وعدي لك</h2>
-          <div class="promise-list">
-            <article>
-              <span>01</span>
-              <p>أسمعك للآخر بدون مقاطعة أو تقليل من إحساسك.</p>
-            </article>
-            <article>
-              <span>02</span>
-              <p>أعتذر بالفعل، مو بالكلام فقط.</p>
-            </article>
-            <article>
-              <span>03</span>
-              <p>أحافظ على اللي بيننا حتى وقت الزعل.</p>
-            </article>
-          </div>
-        </aside>
-      </section>
-
-      <section class="response-zone" aria-labelledby="response-title">
-        <div>
-          <p class="eyebrow">اختاري الرد اللي يناسب قلبك</p>
-          <h2 id="response-title">أنا مستعد أسمع</h2>
-        </div>
-        <div class="response-buttons">
-          <button type="button" data-response="شكرا لأنك أعطيتيني فرصة.">بس أحتاج وقت</button>
-          <button type="button" data-response="وعد، رح نخلي الكلام أهدأ وأصدق.">خلينا نحكي</button>
-          <button type="button" data-response="ابتسامتك عندي بداية جديدة.">سامحتك</button>
-        </div>
-        <p class="response-output" id="responseOutput">أي رد منك رح أقدره.</p>
       </section>
     </main>
 

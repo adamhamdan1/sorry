@@ -1,22 +1,16 @@
 :root {
-  --ink: #26222c;
-  --muted: #6f6675;
-  --paper: #fffaf3;
+  --ink: #27212d;
+  --muted: #756a78;
+  --paper: rgba(255, 250, 243, 0.9);
   --rose: #c9485f;
   --rose-dark: #9d2e45;
   --gold: #d49a36;
   --mint: #7ab6a4;
-  --sky: #8cb9d8;
-  --bg: #f7eee7;
-  --shadow: 0 24px 80px rgba(86, 54, 55, 0.18);
+  --shadow: 0 28px 90px rgba(83, 48, 58, 0.2);
 }
 
 * {
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
@@ -26,36 +20,62 @@ body {
   font-family: "Cairo", system-ui, sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at 12% 18%, rgba(122, 182, 164, 0.22), transparent 26rem),
-    radial-gradient(circle at 80% 5%, rgba(212, 154, 54, 0.2), transparent 22rem),
-    linear-gradient(135deg, #fff8ef 0%, var(--bg) 52%, #edf5f1 100%);
+    radial-gradient(circle at 18% 18%, rgba(122, 182, 164, 0.28), transparent 22rem),
+    radial-gradient(circle at 84% 14%, rgba(212, 154, 54, 0.22), transparent 24rem),
+    linear-gradient(135deg, #fff6ec 0%, #f7e8e5 48%, #edf5f1 100%);
 }
 
-button,
-a {
+button {
   font: inherit;
 }
 
 .apology-shell {
-  width: min(1120px, calc(100% - 32px));
+  width: min(960px, calc(100% - 28px));
+  min-height: 100vh;
   margin: 0 auto;
-  padding: 28px 0 40px;
-}
-
-.hero {
-  min-height: calc(100vh - 56px);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
-  gap: 42px;
-  align-items: center;
+  place-items: center;
+  padding: 28px 0;
 }
 
-.hero-copy {
-  max-width: 620px;
+.talk-card {
+  position: relative;
+  width: 100%;
+  min-height: min(760px, calc(100vh - 56px));
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 16px;
+  padding: clamp(24px, 5vw, 54px);
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid rgba(39, 33, 45, 0.1);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
 }
 
-.eyebrow {
-  margin: 0 0 10px;
+.talk-card > *:not(.letter-scene) {
+  max-width: 100%;
+}
+
+.letter-scene {
+  position: absolute;
+  inset: auto auto -90px -70px;
+  width: min(42vw, 330px);
+  opacity: 0.34;
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+
+.letter-scene img {
+  width: 100%;
+  display: block;
+  filter: drop-shadow(0 22px 30px rgba(98, 55, 64, 0.16));
+}
+
+.tiny-line {
+  margin: 0;
   color: var(--rose-dark);
   font-weight: 800;
 }
@@ -68,324 +88,165 @@ p {
 
 h1 {
   margin-bottom: 18px;
-  font-size: clamp(4rem, 12vw, 8rem);
-  line-height: 0.95;
+  font-size: clamp(3.2rem, 10vw, 7rem);
+  line-height: 1.12;
   letter-spacing: 0;
 }
 
 h2 {
-  margin-bottom: 16px;
-  font-size: 2rem;
-  line-height: 1.25;
+  margin-bottom: 14px;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  line-height: 1.15;
+  letter-spacing: 0;
 }
 
-.intro {
-  max-width: 590px;
+.subtitle {
+  width: min(100%, 620px);
+  margin-bottom: 10px;
   color: var(--muted);
-  font-size: 1.2rem;
-  line-height: 2;
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  line-height: 1.9;
+  overflow-wrap: anywhere;
 }
 
-.hero-actions,
-.response-buttons {
+.choice-row {
+  min-height: 62px;
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  justify-content: center;
+  gap: 14px;
+  transition: transform 180ms ease;
 }
 
-.primary-action,
-.ghost-action,
-.read-more,
-.response-buttons button {
-  min-height: 48px;
+.yes-button,
+.no-button {
+  min-width: 126px;
+  min-height: 54px;
   border: 0;
   border-radius: 8px;
-  padding: 11px 22px;
+  padding: 12px 26px;
   cursor: pointer;
-  text-decoration: none;
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  font-weight: 800;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease,
+    background 180ms ease;
 }
 
-.primary-action,
-.read-more {
+.yes-button {
   color: #fff;
   background: var(--rose);
-  box-shadow: 0 12px 28px rgba(201, 72, 95, 0.26);
-  font-weight: 800;
+  box-shadow: 0 14px 32px rgba(201, 72, 95, 0.28);
 }
 
-.ghost-action,
-.response-buttons button {
+.no-button {
   color: var(--ink);
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(38, 34, 44, 0.12);
-  font-weight: 700;
+  background: #fff;
+  border: 1px solid rgba(39, 33, 45, 0.14);
 }
 
-.primary-action:hover,
-.ghost-action:hover,
-.read-more:hover,
-.response-buttons button:hover {
+.yes-button:hover,
+.no-button:hover {
   transform: translateY(-2px);
 }
 
-.visual-wrap {
-  position: relative;
-  min-height: 560px;
-  display: grid;
-  place-items: center;
+.no-button.hidden {
+  width: 0;
+  min-width: 0;
+  padding-inline: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
 }
 
-.letter-art {
-  width: min(100%, 520px);
-  filter: drop-shadow(0 30px 42px rgba(98, 55, 64, 0.2));
-  animation: breathe 4.5s ease-in-out infinite;
-}
-
-.floating-note {
-  position: absolute;
-  border-radius: 999px;
-  padding: 9px 15px;
-  color: #fff;
-  font-weight: 800;
-  box-shadow: var(--shadow);
-}
-
-.note-one {
-  top: 16%;
-  right: 4%;
-  background: var(--rose);
-}
-
-.note-two {
-  bottom: 22%;
-  left: 0;
+.yes-button.big-yes {
+  min-width: min(260px, 100%);
   background: var(--mint);
 }
 
-.note-three {
-  top: 30%;
-  left: 12%;
-  background: var(--gold);
+.talk-card.teasing {
+  animation: wiggle 360ms ease;
 }
 
-.message-band {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
-  gap: 22px;
-  align-items: stretch;
-  padding: 24px 0;
+.apology-message {
+  max-width: 680px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(16px);
+  transition:
+    max-height 360ms ease,
+    opacity 360ms ease,
+    transform 360ms ease;
 }
 
-.letter-card,
-.promise-panel,
-.response-zone {
-  border: 1px solid rgba(38, 34, 44, 0.1);
-  border-radius: 8px;
-  background: rgba(255, 250, 243, 0.88);
-  box-shadow: var(--shadow);
+.apology-message.show {
+  max-height: 520px;
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.letter-card {
-  padding: clamp(24px, 4vw, 42px);
-}
-
-.letter-topline,
-.response-zone {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-}
-
-.letter-topline {
-  margin-bottom: 24px;
+.apology-message p:not(.tiny-line) {
   color: var(--muted);
-  font-weight: 800;
-}
-
-.date-pill {
-  border-radius: 999px;
-  padding: 5px 13px;
-  color: #fff;
-  background: var(--sky);
-}
-
-.letter-card p,
-.promise-panel p,
-.response-output {
-  color: var(--muted);
-  font-size: 1.06rem;
+  font-size: 1.12rem;
   line-height: 2;
 }
 
-.hidden-line {
-  max-height: 0;
-  margin: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 260ms ease, opacity 260ms ease, margin 260ms ease;
-}
-
-.hidden-line.show {
-  max-height: 140px;
-  margin-top: 18px;
-  opacity: 1;
-}
-
-.promise-panel {
-  padding: 28px;
-}
-
-.promise-list {
-  display: grid;
-  gap: 14px;
-}
-
-.promise-list article {
-  display: grid;
-  grid-template-columns: 46px 1fr;
-  gap: 12px;
-  align-items: start;
-  padding: 16px;
-  border-radius: 8px;
-  background: #fff;
-}
-
-.promise-list span {
-  display: grid;
-  width: 38px;
-  height: 38px;
-  place-items: center;
-  border-radius: 50%;
-  color: #fff;
-  background: var(--rose-dark);
-  font-weight: 800;
-}
-
-.promise-list p {
-  margin: 0;
-}
-
-.response-zone {
-  margin-top: 22px;
-  padding: 24px;
-}
-
-.response-buttons button {
-  min-width: 132px;
-}
-
-.response-buttons button.active {
-  color: #fff;
-  background: var(--rose-dark);
-  border-color: transparent;
-  box-shadow: 0 10px 22px rgba(157, 46, 69, 0.2);
-}
-
-.response-output {
-  min-width: 220px;
-  margin: 0;
-  text-align: left;
-  color: var(--rose-dark);
-  font-weight: 800;
-}
-
-body.soft-mode {
-  --rose: #b94b77;
-  --rose-dark: #823b60;
-  --bg: #f3edf4;
-}
-
-body.soft-mode .letter-art {
-  transform: rotate(-1deg) scale(1.02);
-}
-
-@keyframes breathe {
+@keyframes wiggle {
   0%,
   100% {
-    transform: translateY(0);
+    transform: rotate(0);
   }
 
-  50% {
-    transform: translateY(-14px);
-  }
-}
-
-@media (max-width: 820px) {
-  .hero,
-  .message-band,
-  .response-zone {
-    grid-template-columns: 1fr;
+  30% {
+    transform: rotate(0.8deg);
   }
 
-  .hero {
-    min-height: auto;
-    padding: 54px 0 16px;
-  }
-
-  .hero-copy {
-    text-align: center;
-  }
-
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .visual-wrap {
-    min-height: 380px;
-    order: -1;
-    overflow: hidden;
-  }
-
-  .letter-art {
-    width: min(92%, 420px);
-  }
-
-  .note-one {
-    right: 22%;
-  }
-
-  .response-zone,
-  .letter-topline {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .response-output {
-    text-align: right;
+  65% {
+    transform: rotate(-0.8deg);
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 560px) {
+  body {
+    padding: 10px;
+  }
+
   .apology-shell {
-    width: min(100% - 20px, 1120px);
-    padding-top: 10px;
+    width: 100%;
+    max-width: 960px;
+    padding: 0;
   }
 
-  h1 {
-    font-size: 3.9rem;
+  .talk-card {
+    min-height: calc(100vh - 20px);
+    padding: 24px 14px;
   }
 
-  h2 {
-    font-size: 1.55rem;
+  .letter-scene {
+    width: 220px;
+    inset: auto auto -54px -54px;
   }
 
-  .intro,
-  .letter-card p,
-  .promise-panel p,
-  .response-output {
-    font-size: 1rem;
-  }
-
-  .primary-action,
-  .ghost-action,
-  .read-more,
-  .response-buttons button {
+  .choice-row,
+  .yes-button,
+  .no-button {
     width: 100%;
   }
 
-  .floating-note {
-    font-size: 0.9rem;
+  h1 {
+    font-size: 2.45rem;
+  }
+
+  .subtitle {
+    width: 100%;
+    max-width: 300px;
+    margin-inline: auto;
+    font-size: 1rem;
+  }
+
+  .no-button.hidden {
+    width: 0;
   }
 }

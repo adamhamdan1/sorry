@@ -1,27 +1,58 @@
-const revealButton = document.querySelector("#revealButton");
-const hiddenLine = document.querySelector("#hiddenLine");
-const softenButton = document.querySelector("#softenButton");
-const responseOutput = document.querySelector("#responseOutput");
-const responseButtons = document.querySelectorAll("[data-response]");
+const tinyLine = document.querySelector("#tinyLine");
+const questionTitle = document.querySelector("#questionTitle");
+const subtitle = document.querySelector("#subtitle");
+const yesButton = document.querySelector("#yesButton");
+const noButton = document.querySelector("#noButton");
+const talkCard = document.querySelector(".talk-card");
+const apologyMessage = document.querySelector("#apologyMessage");
 
-revealButton.addEventListener("click", () => {
-  hiddenLine.classList.toggle("show");
-  revealButton.textContent = hiddenLine.classList.contains("show")
-    ? "أخفي السطر"
-    : "كملي قراءة";
+let noClicks = 0;
+let phase = "initial";
+
+const showFinalNudge = () => {
+  tinyLine.textContent = "أنا بعرفك";
+  questionTitle.textContent = "ما أتوقع، انتي حنونة";
+  subtitle.textContent = "زر لا أخذ فرصته كاملة.";
+  noButton.classList.add("hidden");
+  yesButton.classList.add("big-yes");
+  yesButton.textContent = "آه خلينا نحكي";
+  phase = "final-nudge";
+};
+
+const showApology = () => {
+  tinyLine.textContent = "شكرا لأنك وافقتي";
+  questionTitle.textContent = "بعرف إني غلطت";
+  subtitle.textContent = "هاي الرسالة اللي كنت بدي أوصلها.";
+  noButton.classList.add("hidden");
+  yesButton.classList.add("big-yes");
+  yesButton.textContent = "سامحيني";
+  apologyMessage.classList.add("show");
+  phase = "apology";
+};
+
+noButton.addEventListener("click", () => {
+  tinyLine.textContent = "لحظة تفاوض";
+  questionTitle.textContent = noClicks === 0 ? "متأكدة؟" : "لسه لا؟";
+  subtitle.textContent =
+    noClicks === 0
+      ? "يعني ولا حتى دقيقتين؟"
+      : "آخر محاولة قبل ما زر لا يتقاعد.";
+  talkCard.classList.remove("teasing");
+  void talkCard.offsetWidth;
+  talkCard.classList.add("teasing");
+  phase = "confirm";
+  noClicks += 1;
+
+  if (noClicks >= 2) {
+    showFinalNudge();
+  }
 });
 
-softenButton.addEventListener("click", () => {
-  document.body.classList.toggle("soft-mode");
-  softenButton.textContent = document.body.classList.contains("soft-mode")
-    ? "رجعي الهدوء"
-    : "لمسة حنية";
-});
+yesButton.addEventListener("click", () => {
+  if (phase === "confirm") {
+    showFinalNudge();
+    return;
+  }
 
-responseButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    responseOutput.textContent = button.dataset.response;
-    responseButtons.forEach((item) => item.classList.remove("active"));
-    button.classList.add("active");
-  });
+  showApology();
 });
