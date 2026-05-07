@@ -456,10 +456,15 @@ h2 {
 
   .talk-card.apology-mode .choice-row {
     min-height: 48px;
+    margin-block: 16px 22px;
   }
 
   .talk-card.apology-mode .yes-button {
     min-height: 46px;
+  }
+
+  .talk-card.apology-mode .apology-message {
+    margin-top: 6px;
   }
 
   .talk-card::after {
