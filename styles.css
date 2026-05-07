@@ -1,7 +1,7 @@
 :root {
   --ink: #211917;
   --muted: #6f5e56;
-  --paper: rgba(248, 238, 222, 0.5);
+  --paper: rgba(248, 238, 222, 0.24);
   --crimson: #9f2f3f;
   --crimson-dark: #6d1f2a;
   --sand: #d6b889;
@@ -71,7 +71,7 @@ button {
   text-align: center;
   border: 1px solid rgba(255, 248, 236, 0.42);
   border-radius: 8px;
-  backdrop-filter: blur(11px) saturate(1.08);
+  backdrop-filter: blur(1.5px) saturate(1.04);
   background: var(--paper);
   box-shadow: var(--shadow), 0 0 0 1px rgba(255, 255, 255, 0.3) inset;
   animation: cardRise 650ms ease both;
@@ -102,8 +102,8 @@ button {
   content: "";
   pointer-events: none;
   background:
-    radial-gradient(circle at 50% 48%, rgba(255, 248, 236, 0.62), transparent 19rem),
-    linear-gradient(115deg, rgba(255, 255, 255, 0.22), transparent 34%);
+    radial-gradient(circle at 50% 48%, rgba(255, 248, 236, 0.18), transparent 16rem),
+    linear-gradient(115deg, rgba(255, 255, 255, 0.08), transparent 34%);
 }
 
 .talk-card::after {
@@ -200,7 +200,7 @@ h2 {
 
 .no-button {
   color: #2a201d;
-  background: rgba(255, 248, 236, 0.88);
+  background: rgba(255, 248, 236, 0.76);
   border: 1px solid rgba(109, 31, 42, 0.16);
 }
 
@@ -241,7 +241,7 @@ h2 {
   border-radius: 8px;
   padding: 8px 18px;
   color: var(--crimson-dark);
-  background: rgba(255, 248, 236, 0.74);
+  background: rgba(255, 248, 236, 0.62);
   cursor: pointer;
   font-weight: 800;
   touch-action: manipulation;
@@ -389,7 +389,7 @@ h2 {
     max-width: 100vw;
     padding: max(18px, env(safe-area-inset-top)) 16px max(18px, env(safe-area-inset-bottom));
     border-radius: 0;
-    background: rgba(248, 238, 222, 0.58);
+    background: rgba(248, 238, 222, 0.28);
   }
 
   .talk-card::after {
